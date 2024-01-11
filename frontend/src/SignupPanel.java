@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -93,7 +92,7 @@ public class SignupPanel extends JPanel implements ActionListener {
         if (e.getSource() == backBtn) {
             win.change("로그인 화면으로");
         } else if (e.getSource() == signinBtn) {
-            Dialog.showDialog(win, "알림", "회원가입이 완료되었습니다!");
+            AlertDialog.showDialog(win, "알림", "회원가입이 완료되었습니다!");
             win.change("로그인 화면으로");
         }
     }

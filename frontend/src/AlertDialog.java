@@ -3,8 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Dialog extends JDialog {
-    public Dialog(JFrame parent, String title, String message) {
+public class AlertDialog extends JDialog {
+    public AlertDialog(JFrame parent, String title, String message) {
         super(parent, title, true);
 
         setLayout(new BorderLayout());
@@ -33,7 +33,7 @@ public class Dialog extends JDialog {
     }
 
     public static void showDialog(JFrame parent, String title, String message) {
-        Dialog dialog = new Dialog(parent, title, message);
-        dialog.setVisible(true);
+        AlertDialog alertDialog = new AlertDialog(parent, title, message);
+        alertDialog.setVisible(true);
     }
 }
