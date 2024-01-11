@@ -6,45 +6,56 @@ import javax.swing.*;
 public class LoginPanel extends JPanel implements ActionListener {
     private Main win;
     private JButton loginBtn, signupBtn;
-    private JTextField idField;  // 학번 입력 필드
+    private JTextField idField;
 
     public LoginPanel(Main win) {
         this.win = win;
-        setLayout(null);
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
         setBackground(new Color(255, 255, 255));
 
+        Color customColor = new Color(0, 48, 135);
+
+        // 타이틀
         JLabel title = new JLabel("IT공학과 기기 대여 시스템");
-        title.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-        title.setBounds(100, 20, 300, 30);
-        title.setHorizontalAlignment(JLabel.CENTER);
-        add(title);
+        title.setFont(new Font("맑은 고딕", Font.BOLD, 35));
+        SetupUI.setupGBC(gbc, 0, 0, 3, GridBagConstraints.CENTER);
+        add(title, gbc);
 
-        JLabel idFieldLabel = new JLabel("학번:");
-        idFieldLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-        idFieldLabel.setBounds(50, 120, 50, 30);
-        add(idFieldLabel);
+        // 눈송이 이미지
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images/snow_login.png"));
+        JLabel imageLabel = new JLabel(imageIcon);
+        SetupUI.setupGBC(gbc, 0, 1, 3, GridBagConstraints.CENTER);
+        add(imageLabel, gbc);
 
+        // 학번 라벨
+        JLabel idFieldLabel = new JLabel("학번");
+        idFieldLabel.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+        SetupUI.setupGBC(gbc, 0, 2, 1, GridBagConstraints.CENTER);
+        add(idFieldLabel, gbc);
+
+        // 학번 필드
         idField = new JTextField();
-        idField.setBounds(110, 120, 290, 30);
-        add(idField);
+        idField.setPreferredSize(new Dimension(350, 45));
+        SetupUI.setupGBC(gbc, 1, 2, 1, GridBagConstraints.BOTH);
+        add(idField, gbc);
 
+        // 로그인 버튼
         loginBtn = new JButton("로그인");
-        loginBtn.setBounds(110, 170, 290, 40);
-        loginBtn.addActionListener(this);
-        add(loginBtn);
+        SetupUI.setupButton(loginBtn, gbc, 0, 3, customColor, this);
+        add(loginBtn, gbc);
 
+        // 회원가입 버튼
         signupBtn = new JButton("회원가입");
-        signupBtn.setBounds(110, 230, 290, 40);
-        signupBtn.addActionListener(this);
-        add(signupBtn);
+        SetupUI.setupButton(signupBtn, gbc, 0, 4, customColor, this);
+        add(signupBtn, gbc);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == loginBtn) {
+        if (e.getSource() == loginBtn) {
             win.change("대여/문의 선택 화면으로");
-        }
-        else if(e.getSource() == signupBtn) {
+        } else if (e.getSource() == signupBtn) {
             win.change("회원가입 화면으로");
         }
     }

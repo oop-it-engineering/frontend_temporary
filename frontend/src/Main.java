@@ -19,8 +19,6 @@ public class Main extends JFrame {
     public ResPadPanel_1 resPadPanel1= null;
     public ResPadPanel_2 resPadPanel2= null;
 
-
-
     public void change(String panelName) {
         getContentPane().removeAll();
 
