@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,38 +9,69 @@ public class ListLaptopPanel extends JPanel implements ActionListener {
     private JList<String> laptopList;
     private JButton selectBtn, backBtn;
 
-    public ListLaptopPanel(Main win) {
+    public ListLaptopPanel(String userName, Main win) {
         this.win = win;
-        setLayout(null);
-        setBackground(new Color(255, 255, 255));
+        setLayout(new BorderLayout());
+        setBackground(Color.WHITE);
 
+        // 탑 패널
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBackground(Color.WHITE);
+
+        // 버튼 패널
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.setOpaque(false);
+
+        // 뒤로 가기 버튼
+        ImageIcon backIcon = new ImageIcon(getClass().getResource("/images/back.png"));
+        Image backIconScaled = backIcon.getImage().getScaledInstance(48, 38, Image.SCALE_SMOOTH);
+        backBtn = new JButton(new ImageIcon(backIconScaled));
+        backBtn.addActionListener(this);
+        backBtn.setBorderPainted(false);
+        backBtn.setContentAreaFilled(false);
+        backBtn.setMargin(new Insets(10, 10, 0, 0));
+        buttonPanel.add(backBtn);
+        topPanel.add(buttonPanel, BorderLayout.WEST);
+
+        // 눈송이님, 환영합니다!
+        JLabel welcomeLabel = new JLabel(userName + "님, 환영합니다!", SwingConstants.RIGHT);
+        welcomeLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 17));
+        welcomeLabel.setBorder(new EmptyBorder(-4, 0, 0, 15));
+        topPanel.add(welcomeLabel, BorderLayout.EAST);
+        add(topPanel, BorderLayout.NORTH);
+
+        // 중앙 패널
+        JPanel centerPanel = new JPanel(new GridBagLayout());
+        centerPanel.setBackground(Color.WHITE);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        Color customColor = new Color(0, 48, 135);
+
+        // 제목 라벨
         JLabel title = new JLabel("랩탑");
-        title.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-        title.setHorizontalAlignment(JLabel.CENTER);
-        title.setBounds(100, 20, 300, 30);
-        add(title);
+        title.setFont(new Font("맑은 고딕", Font.BOLD, 35));
+        SetupUI.setupGBC(gbc, 0, 0, 3, GridBagConstraints.CENTER);
+        gbc.insets = new Insets(0, 0, 20, 0);
+        centerPanel.add(title, gbc);
 
+        // 랩탑 리스트
         String[] laptops = {"삼성 갤럭시 북 4", "LG 그램"};
         laptopList = new JList<>(laptops);
-        laptopList.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+        laptopList.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
         JScrollPane scrollPane = new JScrollPane(laptopList);
-        scrollPane.setBounds(100, 120, 300, 100);
-        add(scrollPane);
+        scrollPane.setPreferredSize(new Dimension(400, 100));
+        SetupUI.setupGBC(gbc, 0, 1, 2, GridBagConstraints.CENTER);
+        centerPanel.add(scrollPane, gbc);
 
-        selectBtn = new JButton("선택");
-        selectBtn.setBounds(100, 240, 300, 40);
-        selectBtn.addActionListener(this);
-        add(selectBtn);
+        // 선택 버튼
+        selectBtn = SetupUI.createButton("선택", customColor, 20, 400, 70, this);
+        SetupUI.setupGBC(gbc, 0, 2, 2, GridBagConstraints.CENTER);
+        centerPanel.add(selectBtn, gbc);
 
-        backBtn = new JButton("뒤");
-        backBtn.setBounds(10, 20, 80, 30);
-        backBtn.addActionListener(this);
-        add(backBtn);
-
-        JLabel welcomeLabel = new JLabel("눈송이님, 환영합니다!");
-        welcomeLabel.setFont(new Font("맑은 고딕", Font.BOLD, 10));
-        welcomeLabel.setBounds(360, 20, 200, 30);
-        add(welcomeLabel);
+        add(centerPanel, BorderLayout.CENTER);
     }
 
     @Override
@@ -52,7 +84,7 @@ public class ListLaptopPanel extends JPanel implements ActionListener {
                 win.change("랩탑2");
             }
         } else if (e.getSource() == backBtn) {
-            win.change("장비 선택 화면으로");
+            win.change("기기 선택 화면으로");
         }
     }
 }

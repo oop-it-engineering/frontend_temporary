@@ -13,9 +13,9 @@ public class SetupUI {
     }
 
     // 스타일 적용된 버튼 생성 메서드
-    public static JButton createButton(String text, Color color, int width, int height, ActionListener listener) {
+    public static JButton createButton(String text, Color color, int fontSize, int width, int height, ActionListener listener) {
         JButton button = new JButton(text);
-        button.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+        button.setFont(new Font("맑은 고딕", Font.BOLD, fontSize));
         button.setPreferredSize(new Dimension(width, height));
         button.setForeground(Color.WHITE);
         button.setBackground(color);

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,27 +14,24 @@ public class SignupPanel extends JPanel implements ActionListener {
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
 
-        // 탑 패널: 뒤로가기 버튼
-        JPanel topPanel = new JPanel(new GridBagLayout());
+        // 탑 패널
+        JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(Color.WHITE);
 
-        // 뒤로가기 버튼
+        // 버튼 패널
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.setOpaque(false);
+
+        // 뒤로 가기 버튼
         ImageIcon backIcon = new ImageIcon(getClass().getResource("/images/back.png"));
-        Image backIconScaled = backIcon.getImage().getScaledInstance(50, 40, Image.SCALE_SMOOTH);
+        Image backIconScaled = backIcon.getImage().getScaledInstance(48, 38, Image.SCALE_SMOOTH);
         backBtn = new JButton(new ImageIcon(backIconScaled));
         backBtn.addActionListener(this);
         backBtn.setBorderPainted(false);
         backBtn.setContentAreaFilled(false);
-
-        GridBagConstraints gbcBack = new GridBagConstraints();
-        gbcBack.gridx = 0;
-        gbcBack.gridy = 0;
-        gbcBack.anchor = GridBagConstraints.NORTHWEST;
-        gbcBack.weightx = 1.0;
-        gbcBack.weighty = 1.0;
-        gbcBack.insets = new Insets(10, 0, 10, 10);
-        topPanel.add(backBtn, gbcBack);
-
+        backBtn.setMargin(new Insets(0, 10, 0, 0));
+        buttonPanel.add(backBtn);
+        topPanel.add(buttonPanel, BorderLayout.WEST);
         add(topPanel, BorderLayout.NORTH);
 
         // 중앙 패널
@@ -83,7 +81,7 @@ public class SignupPanel extends JPanel implements ActionListener {
         centerPanel.add(nameField, gbc);
 
         // 완료 버튼
-        signinBtn = SetupUI.createButton("완료", customColor, 550, 60, this);
+        signinBtn = SetupUI.createButton("완료", customColor, 20, 550, 70, this);
         SetupUI.setupGBC(gbc, 0, 4, 3, GridBagConstraints.CENTER);
         centerPanel.add(signinBtn, gbc);
 

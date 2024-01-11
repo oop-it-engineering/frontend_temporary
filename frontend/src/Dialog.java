@@ -23,6 +23,7 @@ public class Dialog extends JDialog {
         okButton.setForeground(Color.WHITE);
         okButton.setBackground(new Color(0, 48, 135));
         okButton.setPreferredSize(new Dimension(100, 50));
+        okButton.setFocusPainted(false);
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose(); // 다이얼로그 닫기

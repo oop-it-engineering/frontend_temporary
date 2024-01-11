@@ -65,15 +65,16 @@ public class SelectServicePanel extends JPanel implements ActionListener {
         homeIcon = new ImageIcon(scaledHomeImage);
         JLabel homeLabel = new JLabel(homeIcon);
         SetupUI.setupGBC(gbc, 0, 0, 3, GridBagConstraints.CENTER);
+        gbc.insets = new Insets(0, 0, 30, 0);
         centerPanel.add(homeLabel, gbc);
 
         // 대여하기 버튼
-        rentBtn = SetupUI.createButton("대여하기", customColor, 550, 100, this);
+        rentBtn = SetupUI.createButton("대여하기", customColor, 25, 550, 100, this);
         SetupUI.setupGBC(gbc, 0, 1, 3, GridBagConstraints.CENTER);
         centerPanel.add(rentBtn, gbc);
 
         // 문의하기 버튼
-        inquiryBtn = SetupUI.createButton("문의하기", customColor, 550, 100, this);
+        inquiryBtn = SetupUI.createButton("문의하기", customColor, 25,550, 100, this);
         SetupUI.setupGBC(gbc, 0, 2, 3, GridBagConstraints.CENTER);
         centerPanel.add(inquiryBtn, gbc);
 
@@ -85,7 +86,7 @@ public class SelectServicePanel extends JPanel implements ActionListener {
         if (e.getSource() == backBtn) {
             win.change("로그인 화면으로");
         } else if (e.getSource() == rentBtn) {
-            win.change("장비 선택 화면으로");
+            win.change("기기 선택 화면으로");
         } else if (e.getSource() == myPageBtn) {
             this.win.change("마이페이지 수령 대기 화면으로");
         } else if (e.getSource() == inquiryBtn) {

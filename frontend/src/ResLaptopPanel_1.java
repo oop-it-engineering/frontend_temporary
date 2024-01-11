@@ -173,7 +173,7 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton) {
-            win.change("장비 선택 화면으로");
+            win.change("기기 선택 화면으로");
         } else if (e.getSource() == homeButton) {
             win.change("대여/문의 선택 화면으로");
         }

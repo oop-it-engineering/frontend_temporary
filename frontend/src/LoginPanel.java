@@ -48,12 +48,12 @@ public class LoginPanel extends JPanel implements ActionListener {
         centerPanel.add(idField, gbc);
 
         // 로그인 버튼
-        loginBtn = SetupUI.createButton("로그인", customColor, 550, 60, this);
+        loginBtn = SetupUI.createButton("로그인", customColor, 20, 550, 70, this);
         SetupUI.setupGBC(gbc, 0, 3, 2, GridBagConstraints.CENTER);
         centerPanel.add(loginBtn, gbc);
 
         // 회원가입 버튼
-        signupBtn = SetupUI.createButton("회원가입", customColor, 550, 60, this);
+        signupBtn = SetupUI.createButton("회원가입", customColor, 20, 550, 70, this);
         SetupUI.setupGBC(gbc, 0, 4, 2, GridBagConstraints.CENTER);
         centerPanel.add(signupBtn, gbc);
 

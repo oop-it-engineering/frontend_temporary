@@ -31,7 +31,7 @@ public class Main extends JFrame {
         else if (panelName.equals("대여/문의 선택 화면으로")) {
             getContentPane().add(selectServicePanel);
         }
-        else if (panelName.equals("장비 선택 화면으로")) {
+        else if (panelName.equals("기기 선택 화면으로")) {
             getContentPane().add(selectEquipPanel);
         }
         else if (panelName.equals("랩탑 선택 화면으로")) {
@@ -83,11 +83,11 @@ public class Main extends JFrame {
         win.loginPanel = new LoginPanel(win);
         win.signupPanel = new SignupPanel(win);
         win.selectServicePanel = new SelectServicePanel("눈송이", win);
-        win.selectEquipPanel = new SelectEquipPanel(win);
-        win.listLaptopPanel = new ListLaptopPanel(win);
-        win.listPadPanel = new ListPadPanel(win);
-        win.listMobilePanel = new ListMobilePanel(win);
-        win.listOtherPanel = new ListOtherPanel(win);
+        win.selectEquipPanel = new SelectEquipPanel("눈송이", win);
+        win.listLaptopPanel = new ListLaptopPanel("눈송이", win);
+        win.listPadPanel = new ListPadPanel("눈송이", win);
+        win.listMobilePanel = new ListMobilePanel("눈송이", win);
+        win.listOtherPanel = new ListOtherPanel("눈송이", win);
         win.resLaptopPanel1 = new ResLaptopPanel_1("눈송이", win);
         win.resLaptopPanel2 = new ResLaptopPanel_2("눈송이", win);
         win.resMobilePanel1 = new ResMobilePanel_1("눈송이", win);

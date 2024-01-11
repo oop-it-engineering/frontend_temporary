@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,46 +8,72 @@ public class SelectEquipPanel extends JPanel implements ActionListener {
     private Main win;
     private JButton laptopBtn, padBtn, mobileBtn, otherBtn, backBtn;
 
-    public SelectEquipPanel(Main win) {
+    public SelectEquipPanel(String userName, Main win) {
         this.win = win;
-        setLayout(null);
-        setBackground(new Color(255, 255, 255));
+        setLayout(new BorderLayout());
+        setBackground(Color.WHITE);
 
-        JLabel title = new JLabel("기기 선택");
-        title.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-        title.setBounds(150, 20, 200, 30);
-        title.setHorizontalAlignment(JLabel.CENTER);
-        add(title);
+        // 탑 패널
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBackground(Color.WHITE);
 
-        laptopBtn = new JButton("랩탑");
-        laptopBtn.setBounds(90, 120, 150, 50);
-        laptopBtn.addActionListener(this);
-        add(laptopBtn);
+        // 버튼 패널
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.setOpaque(false);
 
-        padBtn = new JButton("패드");
-        padBtn.setBounds(250, 120, 150, 50);
-        padBtn.addActionListener(this);
-        add(padBtn);
-
-        mobileBtn = new JButton("모바일 기기");
-        mobileBtn.setBounds(90, 180, 150, 50);
-        mobileBtn.addActionListener(this);
-        add(mobileBtn);
-
-        otherBtn = new JButton("<html>기타 기기<br/>(아두이노)</html>");
-        otherBtn.setBounds(250, 180, 150, 50);
-        otherBtn.addActionListener(this);
-        add(otherBtn);
-
-        backBtn = new JButton("뒤");
-        backBtn.setBounds(10, 20, 80, 30);
+        // 뒤로 가기 버튼
+        ImageIcon backIcon = new ImageIcon(getClass().getResource("/images/back.png"));
+        Image backIconScaled = backIcon.getImage().getScaledInstance(48, 38, Image.SCALE_SMOOTH);
+        backBtn = new JButton(new ImageIcon(backIconScaled));
         backBtn.addActionListener(this);
-        add(backBtn);
+        backBtn.setBorderPainted(false);
+        backBtn.setContentAreaFilled(false);
+        backBtn.setMargin(new Insets(10, 10, 0, 0));
+        buttonPanel.add(backBtn);
+        topPanel.add(buttonPanel, BorderLayout.WEST);
 
-        JLabel welcomeLabel = new JLabel("눈송이님, 환영합니다!");
-        welcomeLabel.setFont(new Font("맑은 고딕", Font.BOLD, 10));
-        welcomeLabel.setBounds(360, 20, 200, 30);
-        add(welcomeLabel);
+        // 눈송이님, 환영합니다!
+        JLabel welcomeLabel = new JLabel(userName + "님, 환영합니다!", SwingConstants.RIGHT);
+        welcomeLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 17));
+        welcomeLabel.setBorder(new EmptyBorder(-6, 0, 0, 15));
+        topPanel.add(welcomeLabel, BorderLayout.EAST);
+        add(topPanel, BorderLayout.NORTH);
+
+        // 중앙 패널
+        JPanel centerPanel = new JPanel(new GridBagLayout());
+        centerPanel.setBackground(Color.WHITE);
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        Color customColor = new Color(0, 48, 135);
+
+        // 제목 라벨
+        JLabel title = new JLabel("기기 선택");
+        title.setFont(new Font("맑은 고딕", Font.BOLD, 35));
+        SetupUI.setupGBC(gbc, 0, 0, 2, GridBagConstraints.CENTER);
+        gbc.insets = new Insets(0, 0, 40, 0);
+        centerPanel.add(title, gbc);
+
+        // 랩탑 버튼
+        laptopBtn = SetupUI.createButton("랩탑", customColor, 25, 250, 150, this);
+        SetupUI.setupGBC(gbc, 0, 1, 1, GridBagConstraints.HORIZONTAL);
+        centerPanel.add(laptopBtn, gbc);
+
+        // 패드 버튼
+        padBtn = SetupUI.createButton("패드", customColor, 25, 250, 150, this);
+        SetupUI.setupGBC(gbc, 1, 1, 1, GridBagConstraints.HORIZONTAL);
+        centerPanel.add(padBtn, gbc);
+
+        // 모바일 기기 버튼
+        mobileBtn = SetupUI.createButton("모바일 기기", customColor, 25, 250, 150, this);
+        SetupUI.setupGBC(gbc, 0, 2, 1, GridBagConstraints.HORIZONTAL);
+        centerPanel.add(mobileBtn, gbc);
+
+        // 기타 기기 버튼
+        otherBtn = SetupUI.createButton("<html>기타 기기<br/>(아두이노)</html>", customColor, 25, 250, 150, this);
+        SetupUI.setupGBC(gbc, 1, 2, 1, GridBagConstraints.HORIZONTAL);
+        centerPanel.add(otherBtn, gbc);
+
+        add(centerPanel, BorderLayout.CENTER);
     }
 
     @Override
