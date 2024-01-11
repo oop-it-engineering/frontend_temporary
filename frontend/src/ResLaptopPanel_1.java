@@ -48,7 +48,7 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
 
         // 가운데 제목 라벨
         JLabel titleLabel = new JLabel("예약 페이지", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 25));
+        titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 25));
         titleLabel.setForeground(Color.WHITE);
         topPanel.add(titleLabel, BorderLayout.CENTER);
 
@@ -66,7 +66,7 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
 
         // 제목 라벨
         JLabel deviceTitleLabel = new JLabel("갤럭시 북 4");
-        deviceTitleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        deviceTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         deviceTitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         centerPanel.add(deviceTitleLabel);
 
@@ -124,7 +124,7 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
         button.setContentAreaFilled(false);
         button.setForeground(Color.WHITE);
         button.setBackground(new Color(70, 130, 180));
-        button.setFont(new Font("Arial", Font.BOLD, 16));
+        button.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         button.setOpaque(true);
     }
 

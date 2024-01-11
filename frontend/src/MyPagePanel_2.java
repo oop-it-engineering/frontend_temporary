@@ -34,7 +34,7 @@ public class MyPagePanel_2 extends JPanel implements ActionListener {
         add(backBtn);
 
         JLabel welcomeLabel = new JLabel("눈송이님, 환영합니다!");
-        welcomeLabel.setFont(new Font("SanSerif", Font.BOLD, 10));
+        welcomeLabel.setFont(new Font("맑은 고딕", Font.BOLD, 10));
         welcomeLabel.setBounds(360, 20, 200, 30);
         add(welcomeLabel);
 

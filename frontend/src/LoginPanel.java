@@ -12,22 +12,22 @@ public class LoginPanel extends JPanel implements ActionListener {
         this.win = win;
         setLayout(null);
         setBackground(new Color(255, 255, 255));
-        
+
         JLabel title = new JLabel("IT공학과 기기 대여 시스템");
-        title.setFont(new Font("SanSerif", Font.BOLD, 20));
+        title.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         title.setBounds(100, 20, 300, 30);
         title.setHorizontalAlignment(JLabel.CENTER);
         add(title);
 
         JLabel idFieldLabel = new JLabel("학번:");
-        idFieldLabel.setFont(new Font("SanSerif", Font.PLAIN, 16));
+        idFieldLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         idFieldLabel.setBounds(50, 120, 50, 30);
         add(idFieldLabel);
-        
+
         idField = new JTextField();
         idField.setBounds(110, 120, 290, 30);
         add(idField);
-        
+
         loginBtn = new JButton("로그인");
         loginBtn.setBounds(110, 170, 290, 40);
         loginBtn.addActionListener(this);

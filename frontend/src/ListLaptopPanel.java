@@ -14,14 +14,14 @@ public class ListLaptopPanel extends JPanel implements ActionListener {
         setBackground(new Color(255, 255, 255));
 
         JLabel title = new JLabel("랩탑");
-        title.setFont(new Font("SanSerif", Font.BOLD, 20));
+        title.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setBounds(100, 20, 300, 30);
         add(title);
 
         String[] laptops = {"삼성 갤럭시 북 4", "LG 그램"};
         laptopList = new JList<>(laptops);
-        laptopList.setFont(new Font("SanSerif", Font.PLAIN, 16));
+        laptopList.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         JScrollPane scrollPane = new JScrollPane(laptopList);
         scrollPane.setBounds(100, 120, 300, 100);
         add(scrollPane);
@@ -37,7 +37,7 @@ public class ListLaptopPanel extends JPanel implements ActionListener {
         add(backBtn);
 
         JLabel welcomeLabel = new JLabel("눈송이님, 환영합니다!");
-        welcomeLabel.setFont(new Font("SanSerif", Font.BOLD, 10));
+        welcomeLabel.setFont(new Font("맑은 고딕", Font.BOLD, 10));
         welcomeLabel.setBounds(360, 20, 200, 30);
         add(welcomeLabel);
     }

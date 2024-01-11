@@ -13,7 +13,7 @@ public class SelectServicePanel extends JPanel implements ActionListener {
         setBackground(new Color(255, 255, 255));
 
         JLabel title = new JLabel("HOME");
-        title.setFont(new Font("SanSerif", Font.BOLD, 20));
+        title.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         title.setBounds(100, 70, 300, 30);
         title.setHorizontalAlignment(JLabel.CENTER);
         add(title);
@@ -39,7 +39,7 @@ public class SelectServicePanel extends JPanel implements ActionListener {
         add(myPageBtn);
 
         JLabel welcomeLabel = new JLabel("눈송이님, 환영합니다!");
-        welcomeLabel.setFont(new Font("SanSerif", Font.BOLD, 10));
+        welcomeLabel.setFont(new Font("맑은 고딕", Font.BOLD, 10));
         welcomeLabel.setBounds(360, 20, 200, 30);
         add(welcomeLabel);
 
@@ -63,7 +63,7 @@ public class SelectServicePanel extends JPanel implements ActionListener {
             qrCodeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
             JLabel timerLabel = new JLabel("15초 후에 자동으로 닫힙니다.", SwingConstants.CENTER);
-            timerLabel.setFont(new Font("SanSerif", Font.BOLD, 15));
+            timerLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 
             dialog.add(qrCodeLabel, BorderLayout.CENTER);
             dialog.add(timerLabel, BorderLayout.SOUTH);

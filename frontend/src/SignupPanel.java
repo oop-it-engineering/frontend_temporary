@@ -15,13 +15,13 @@ public class SignupPanel extends JPanel implements ActionListener {
         setBackground(new Color(255, 255, 255));
 
         JLabel title = new JLabel("회원가입");
-        title.setFont(new Font("SanSerif", Font.BOLD, 20));
+        title.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         title.setBounds(100, 20, 300, 30);
         title.setHorizontalAlignment(JLabel.CENTER);
         add(title);
 
         JLabel nameLabel = new JLabel("학번:");
-        nameLabel.setFont(new Font("SanSerif", Font.PLAIN, 16));
+        nameLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         nameLabel.setBounds(50, 120, 50, 30);
         add(nameLabel);
 
@@ -30,7 +30,7 @@ public class SignupPanel extends JPanel implements ActionListener {
         add(idField);
 
         JLabel idLabel = new JLabel("이름:");
-        idLabel.setFont(new Font("SanSerif", Font.PLAIN, 16));
+        idLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         idLabel.setBounds(50, 170, 50, 30);
         add(idLabel);
 

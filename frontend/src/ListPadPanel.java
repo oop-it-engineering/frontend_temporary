@@ -14,7 +14,7 @@ public class ListPadPanel extends JPanel implements ActionListener {
         setBackground(new Color(255, 255, 255));
 
         JLabel title = new JLabel("패드");
-        title.setFont(new Font("SanSerif", Font.BOLD, 20));
+        title.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setBounds(100, 20, 300, 30);
         add(title);
@@ -22,7 +22,7 @@ public class ListPadPanel extends JPanel implements ActionListener {
         // 패드 목록 JList
         String[] pads = {"갤럭시 탭 s9", "아이패드 에어 4"};
         padList = new JList<>(pads);
-        padList.setFont(new Font("SanSerif", Font.PLAIN, 16));
+        padList.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
         JScrollPane scrollPane = new JScrollPane(padList);
         scrollPane.setBounds(100, 120, 300, 100);
         add(scrollPane);
@@ -38,7 +38,7 @@ public class ListPadPanel extends JPanel implements ActionListener {
         add(backBtn);
 
         JLabel welcomeLabel = new JLabel("눈송이님, 환영합니다!");
-        welcomeLabel.setFont(new Font("SanSerif", Font.BOLD, 10));
+        welcomeLabel.setFont(new Font("맑은 고딕", Font.BOLD, 10));
         welcomeLabel.setBounds(360, 20, 200, 30);
         add(welcomeLabel);
     }
