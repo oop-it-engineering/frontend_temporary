@@ -14,7 +14,7 @@ public class ListLaptopPanel extends JPanel implements ActionListener {
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
 
-        // 탑 패널
+        // 상단 패널
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(Color.WHITE);
 

@@ -95,8 +95,8 @@ public class Main extends JFrame {
         win.resOtherPanel = new ResOtherPanel("눈송이", win);
         win.resPadPanel1 = new ResPadPanel_1("눈송이", win);
         win.resPadPanel2 = new ResPadPanel_2("눈송이", win);
-        win.myPagePanel1 = new MyPagePanel_1(win);
-        win.myPagePanel2 = new MyPagePanel_2(win);
+        win.myPagePanel1 = new MyPagePanel_1("눈송이", win);
+        win.myPagePanel2 = new MyPagePanel_2("눈송이", win);
 
         win.add(win.loginPanel);
         win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

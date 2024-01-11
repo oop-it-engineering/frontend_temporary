@@ -14,7 +14,7 @@ public class AlertDialog extends JDialog {
 
         // 메시지 라벨
         JLabel messageLabel = new JLabel(message, SwingConstants.CENTER);
-        messageLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+        messageLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
         add(messageLabel, BorderLayout.CENTER);
 
         // 버튼
