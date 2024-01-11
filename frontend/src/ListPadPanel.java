@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class ListPadPanel extends JPanel implements ActionListener {
     private Main win;
     private JList<String> padList;
-    private JButton backBtn;
+    private JButton selectBtn, backBtn;
 
     public ListPadPanel(Main win) {
         this.win = win;
@@ -20,22 +20,16 @@ public class ListPadPanel extends JPanel implements ActionListener {
         add(title);
 
         // 패드 목록 JList
-        String[] pads = {"아이패드 에어 4", "갤럭시 탭 s9", "레노버 탭 m10"};
+        String[] pads = {"갤럭시 탭 s9", "아이패드 에어 4"};
         padList = new JList<>(pads);
         padList.setFont(new Font("SanSerif", Font.PLAIN, 16));
         JScrollPane scrollPane = new JScrollPane(padList);
         scrollPane.setBounds(100, 120, 300, 100);
         add(scrollPane);
 
-        JButton selectBtn = new JButton("선택");
+        selectBtn = new JButton("선택");
         selectBtn.setBounds(100, 240, 300, 40);
-        selectBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedpad = padList.getSelectedValue();
-                // 선택된 패드에 대한 처리
-            }
-        });
+        selectBtn.addActionListener(this);
         add(selectBtn);
 
         backBtn = new JButton("뒤");
@@ -51,7 +45,14 @@ public class ListPadPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == backBtn) {
+        if (e.getSource() == selectBtn) {
+            String selectedpad = padList.getSelectedValue();
+            if ("갤럭시 탭 s9".equals(selectedpad)) {
+                win.change("패드");
+            } else if ("아이패드 에어 4".equals(selectedpad)) {
+                win.change("패드2");
+            }
+        } else if (e.getSource() == backBtn) {
             win.change("장비 선택 화면으로");
         }
     }
