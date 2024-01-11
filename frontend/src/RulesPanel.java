@@ -35,7 +35,7 @@ public class RulesPanel extends JDialog {
         rulesTextArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         agreeButton = new JButton("동의");
-        agreeButton.setBackground(new Color(70, 130, 180));
+        agreeButton.setBackground(new Color(0, 48, 135));
         agreeButton.setOpaque(true);
         agreeButton.setBorderPainted(false);
         agreeButton.setForeground(Color.WHITE);

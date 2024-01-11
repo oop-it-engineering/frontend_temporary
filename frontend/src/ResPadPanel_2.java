@@ -100,6 +100,7 @@ public class ResPadPanel_2 extends JPanel implements ActionListener {
 
         // '규정 확인하기' -> 규정 확인 창으로 넘어가는 버튼
         JButton reserveButton = new JButton("예약하기");
+        reserveButton.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         reserveButton.setPreferredSize(new Dimension(200, 50));
         styleButton(reserveButton, new Color(210, 86, 106));
         reserveButton.addActionListener(e -> showRulesDialog());
@@ -132,18 +133,19 @@ public class ResPadPanel_2 extends JPanel implements ActionListener {
     private JPanel createInfoPanel(int width) {
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new GridLayout(4, 1, 0, 0));
-        infoPanel.setBorder(new LineBorder(Color.BLACK));
         infoPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         infoPanel.setBackground(new Color(230, 244, 250));
         infoPanel.setMaximumSize(new Dimension(width, 120));
 
         JLabel infoTitleLabel = new JLabel("상세 사양", SwingConstants.CENTER);
+        infoTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         infoTitleLabel.setFont(infoTitleLabel.getFont().deriveFont(Font.BOLD));
         infoPanel.add(infoTitleLabel);
 
         String[] specs = {"OS: Android", "Display: 10 inch", "Battery: 6000mAh"};
         for (String spec : specs) {
             JLabel label = new JLabel(spec, SwingConstants.CENTER);
+            infoTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
             infoPanel.add(label);
         }
         return infoPanel;
@@ -153,18 +155,20 @@ public class ResPadPanel_2 extends JPanel implements ActionListener {
     private JPanel createReservationPanel(int width) {
         JPanel reservationPanel = new JPanel();
         reservationPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        reservationPanel.setBorder(new LineBorder(Color.BLACK));
         reservationPanel.setBackground(new Color(255, 250, 205));
         reservationPanel.setMaximumSize(new Dimension(400, 70));
 
         dateLabel = new JLabel("대여 날짜 입력: ");
+        dateLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
         reservationPanel.add(dateLabel);
 
         dateTextField = new ResPadPanel_2.HintTextField("YYYY-MM-DD"); // 힌트 텍스트 설정
+        dateTextField.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
         reservationPanel.add(dateTextField);
 
         // 남은 기기 수량 라벨
         remainingDeviceLabel = new JLabel("남은 기기 수량: 10", SwingConstants.CENTER); // 예시 수량
+        remainingDeviceLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
         reservationPanel.add(remainingDeviceLabel);
 
         return reservationPanel;
