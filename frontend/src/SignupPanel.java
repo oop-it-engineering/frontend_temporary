@@ -10,61 +10,84 @@ public class SignupPanel extends JPanel implements ActionListener {
 
     public SignupPanel(Main win) {
         this.win = win;
-        setLayout(new GridBagLayout());
+        setLayout(new BorderLayout());
+        setBackground(Color.WHITE);
+
+        // 탑 패널: 뒤로가기 버튼
+        JPanel topPanel = new JPanel(new GridBagLayout());
+        topPanel.setBackground(Color.WHITE);
+
+        // 뒤로가기 버튼
+        ImageIcon backIcon = new ImageIcon(getClass().getResource("/images/back.png"));
+        Image backIconScaled = backIcon.getImage().getScaledInstance(50, 40, Image.SCALE_SMOOTH);
+        backBtn = new JButton(new ImageIcon(backIconScaled));
+        backBtn.addActionListener(this);
+        backBtn.setBorderPainted(false);
+        backBtn.setContentAreaFilled(false);
+
+        GridBagConstraints gbcBack = new GridBagConstraints();
+        gbcBack.gridx = 0;
+        gbcBack.gridy = 0;
+        gbcBack.anchor = GridBagConstraints.NORTHWEST;
+        gbcBack.weightx = 1.0;
+        gbcBack.weighty = 1.0;
+        gbcBack.insets = new Insets(10, 0, 10, 10);
+        topPanel.add(backBtn, gbcBack);
+
+        add(topPanel, BorderLayout.NORTH);
+
+        // 중앙 패널
+        JPanel centerPanel = new JPanel(new GridBagLayout());
+        centerPanel.setBackground(Color.WHITE);
+
         GridBagConstraints gbc = new GridBagConstraints();
-        setBackground(new Color(255, 255, 255));
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
         Color customColor = new Color(0, 48, 135);
 
-        // 타이틀
+        // 제목 라벨
         JLabel title = new JLabel("회원가입");
         title.setFont(new Font("맑은 고딕", Font.BOLD, 35));
         SetupUI.setupGBC(gbc, 0, 0, 3, GridBagConstraints.CENTER);
-        add(title, gbc);
+        centerPanel.add(title, gbc);
 
         // 눈송이 이미지
-        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images/snow_signup.png"));
-        JLabel imageLabel = new JLabel(imageIcon);
+        ImageIcon snowIcon = new ImageIcon(getClass().getResource("/images/snow_signup.png"));
+        JLabel snowLabel = new JLabel(snowIcon);
         SetupUI.setupGBC(gbc, 0, 1, 3, GridBagConstraints.CENTER);
-        add(imageLabel, gbc);
+        centerPanel.add(snowLabel, gbc);
 
         // 학번 라벨
         JLabel idLabel = new JLabel("학번");
-        idLabel.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+        idLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         SetupUI.setupGBC(gbc, 0, 2, 1, GridBagConstraints.CENTER);
-        add(idLabel, gbc);
+        centerPanel.add(idLabel, gbc);
 
         // 학번 필드
         idField = new JTextField();
-        idField.setPreferredSize(new Dimension(350, 45));
+        idField.setPreferredSize(new Dimension(480, 55));
         SetupUI.setupGBC(gbc, 1, 2, 1, GridBagConstraints.BOTH);
-        add(idField, gbc);
+        centerPanel.add(idField, gbc);
 
         // 이름 라벨
         JLabel nameLabel = new JLabel("이름");
-        nameLabel.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+        nameLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         SetupUI.setupGBC(gbc, 0, 3, 1, GridBagConstraints.CENTER);
-        add(nameLabel, gbc);
+        centerPanel.add(nameLabel, gbc);
 
         // 이름 필드
         nameField = new JTextField();
-        nameField.setPreferredSize(new Dimension(350, 45));
+        nameField.setPreferredSize(new Dimension(490, 55));
         SetupUI.setupGBC(gbc, 1, 3, 1, GridBagConstraints.BOTH);
-        add(nameField, gbc);
+        centerPanel.add(nameField, gbc);
 
         // 완료 버튼
-        signinBtn = new JButton("완료");
-        SetupUI.setupButton(signinBtn, gbc, 0, 4, customColor, this);
-        add(signinBtn, gbc);
+        signinBtn = SetupUI.createButton("완료", customColor, 550, 60, this);
+        SetupUI.setupGBC(gbc, 0, 4, 3, GridBagConstraints.CENTER);
+        centerPanel.add(signinBtn, gbc);
 
-        // 뒤로가기 버튼
-        ImageIcon backIcon = new ImageIcon(getClass().getResource("/images/mypage.png"));
-        backBtn = new JButton(backIcon);
-        backBtn.setPreferredSize(new Dimension(20, 20));
-        backBtn.addActionListener(this);
-        SetupUI.setupGBC(gbc, 0, 0, 1, GridBagConstraints.NORTHWEST);
-        gbc.insets = new Insets(0, 0, 0, 0);
-        add(backBtn, gbc);
+        add(centerPanel, BorderLayout.CENTER);
     }
 
     @Override

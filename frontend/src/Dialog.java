@@ -14,12 +14,12 @@ public class Dialog extends JDialog {
 
         // 메시지 라벨
         JLabel messageLabel = new JLabel(message, SwingConstants.CENTER);
-        messageLabel.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+        messageLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         add(messageLabel, BorderLayout.CENTER);
 
         // 버튼
         JButton okButton = new JButton("OK");
-        okButton.setFont(new Font("맑은 고딕", Font.BOLD, 17));
+        okButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         okButton.setForeground(Color.WHITE);
         okButton.setBackground(new Color(0, 48, 135));
         okButton.setPreferredSize(new Dimension(100, 50));

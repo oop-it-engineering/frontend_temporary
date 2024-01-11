@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,42 +8,76 @@ public class SelectServicePanel extends JPanel implements ActionListener {
     private Main win;
     private JButton rentBtn, inquiryBtn, backBtn, myPageBtn;
 
-    public SelectServicePanel(Main win) {
+    public SelectServicePanel(String userName, Main win) {
         this.win = win;
-        setLayout(null);
-        setBackground(new Color(255, 255, 255));
+        setLayout(new BorderLayout());
+        setBackground(Color.WHITE);
 
-        JLabel title = new JLabel("HOME");
-        title.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-        title.setBounds(100, 70, 300, 30);
-        title.setHorizontalAlignment(JLabel.CENTER);
-        add(title);
+        // 탑 패널
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBackground(Color.WHITE);
 
-        rentBtn = new JButton("대여하기");
-        rentBtn.setBounds(100, 120, 300, 50);
-        rentBtn.addActionListener(this);
-        add(rentBtn);
+        // 버튼 패널: 뒤로 가기 및 마이페이지 버튼
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.setOpaque(false);
 
-        inquiryBtn = new JButton("문의하기");
-        inquiryBtn.setBounds(100, 200, 300, 50);
-        inquiryBtn.addActionListener(this);
-        add(inquiryBtn);
-
-        backBtn = new JButton("뒤");
-        backBtn.setBounds(10, 20, 80, 30);
+        // 뒤로 가기 버튼
+        ImageIcon backIcon = new ImageIcon(getClass().getResource("/images/back.png"));
+        Image backIconScaled = backIcon.getImage().getScaledInstance(48, 38, Image.SCALE_SMOOTH);
+        backBtn = new JButton(new ImageIcon(backIconScaled));
         backBtn.addActionListener(this);
-        add(backBtn);
+        backBtn.setBorderPainted(false);
+        backBtn.setContentAreaFilled(false);
+        backBtn.setMargin(new Insets(0, 10, 0, 0));
+        buttonPanel.add(backBtn);
 
-        myPageBtn = new JButton("마이페이지");
-        myPageBtn.setBounds(100, 20, 140, 30);
+        // 마이페이지 버튼
+        ImageIcon myPageIcon = new ImageIcon(getClass().getResource("/images/mypage.png"));
+        Image myPageIconScaled = myPageIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        myPageBtn = new JButton(new ImageIcon(myPageIconScaled));
         myPageBtn.addActionListener(this);
-        add(myPageBtn);
+        myPageBtn.setBorderPainted(false);
+        myPageBtn.setContentAreaFilled(false);
+        myPageBtn.setMargin(new Insets(5, 5, 0, 0));
+        buttonPanel.add(myPageBtn);
+        topPanel.add(buttonPanel, BorderLayout.WEST);
 
-        JLabel welcomeLabel = new JLabel("눈송이님, 환영합니다!");
-        welcomeLabel.setFont(new Font("맑은 고딕", Font.BOLD, 10));
-        welcomeLabel.setBounds(360, 20, 200, 30);
-        add(welcomeLabel);
+        // 눈송이님, 환영합니다!
+        JLabel welcomeLabel = new JLabel(userName + "님, 환영합니다!", SwingConstants.RIGHT);
+        welcomeLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 17));
+        welcomeLabel.setBorder(new EmptyBorder(-13, 0, 0, 15));
+        topPanel.add(welcomeLabel, BorderLayout.EAST);
+        add(topPanel, BorderLayout.NORTH);
 
+        // 중앙 패널
+        JPanel centerPanel = new JPanel(new GridBagLayout());
+        centerPanel.setBackground(Color.WHITE);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        Color customColor = new Color(0, 48, 135);
+
+        // 홈 이미지
+        ImageIcon homeIcon = new ImageIcon(getClass().getResource("/images/home.png"));
+        Image scaledHomeImage = homeIcon.getImage().getScaledInstance(130, 130, Image.SCALE_SMOOTH);
+        homeIcon = new ImageIcon(scaledHomeImage);
+        JLabel homeLabel = new JLabel(homeIcon);
+        SetupUI.setupGBC(gbc, 0, 0, 3, GridBagConstraints.CENTER);
+        centerPanel.add(homeLabel, gbc);
+
+        // 대여하기 버튼
+        rentBtn = SetupUI.createButton("대여하기", customColor, 550, 100, this);
+        SetupUI.setupGBC(gbc, 0, 1, 3, GridBagConstraints.CENTER);
+        centerPanel.add(rentBtn, gbc);
+
+        // 문의하기 버튼
+        inquiryBtn = SetupUI.createButton("문의하기", customColor, 550, 100, this);
+        SetupUI.setupGBC(gbc, 0, 2, 3, GridBagConstraints.CENTER);
+        centerPanel.add(inquiryBtn, gbc);
+
+        add(centerPanel, BorderLayout.CENTER);
     }
 
     @Override
@@ -56,18 +91,22 @@ public class SelectServicePanel extends JPanel implements ActionListener {
         } else if (e.getSource() == inquiryBtn) {
             JDialog dialog = new JDialog(win, "문의하기");
             dialog.setLayout(new BorderLayout());
-            dialog.setSize(300, 330);
+            dialog.setSize(330, 360);
+            dialog.getContentPane().setBackground(Color.WHITE);
 
+            // QR 코드 이미지
             ImageIcon qrCode = new ImageIcon(getClass().getResource("/images/qrcode.png"));
             JLabel qrCodeLabel = new JLabel(qrCode);
             qrCodeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
+            // 타이머 라벨
             JLabel timerLabel = new JLabel("15초 후에 자동으로 닫힙니다.", SwingConstants.CENTER);
-            timerLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+            timerLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 
             dialog.add(qrCodeLabel, BorderLayout.CENTER);
             dialog.add(timerLabel, BorderLayout.SOUTH);
 
+            // 타이머 쓰레드 시작
             Thread thread = new Thread(new Runnable() {
                 private int count = 15;
 

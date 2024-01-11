@@ -82,7 +82,7 @@ public class Main extends JFrame {
         win.setTitle("IT공학과 기기 대여 시스템");
         win.loginPanel = new LoginPanel(win);
         win.signupPanel = new SignupPanel(win);
-        win.selectServicePanel = new SelectServicePanel(win);
+        win.selectServicePanel = new SelectServicePanel("눈송이", win);
         win.selectEquipPanel = new SelectEquipPanel(win);
         win.listLaptopPanel = new ListLaptopPanel(win);
         win.listPadPanel = new ListPadPanel(win);
