@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class ListMobilePanel extends JPanel implements ActionListener {
     private Main win;
     private JList<String> mobileList;
-    private JButton backBtn;
+    private JButton selectBtn, backBtn;
 
     public ListMobilePanel(Main win) {
         this.win = win;
@@ -20,22 +20,16 @@ public class ListMobilePanel extends JPanel implements ActionListener {
         add(title);
 
         // 모바일 기기 목록 JList
-        String[] mobiles = {"갤럭시 s23", "아이폰 15", "갤럭시 a24"};
+        String[] mobiles = {"갤럭시 s23", "아이폰 15"};
         mobileList = new JList<>(mobiles);
         mobileList.setFont(new Font("SanSerif", Font.PLAIN, 16));
         JScrollPane scrollPane = new JScrollPane(mobileList);
         scrollPane.setBounds(100, 120, 300, 100);
         add(scrollPane);
 
-        JButton selectBtn = new JButton("선택");
+        selectBtn = new JButton("선택");
         selectBtn.setBounds(100, 240, 300, 40);
-        selectBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedmobile = mobileList.getSelectedValue();
-                // 선택된 모바일 기기에 대한 처리
-            }
-        });
+        selectBtn.addActionListener(this);
         add(selectBtn);
 
         backBtn = new JButton("뒤");
@@ -51,7 +45,14 @@ public class ListMobilePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == backBtn) {
+        if (e.getSource() == selectBtn) {
+            String selectedmobile = mobileList.getSelectedValue();
+            if ("갤럭시 s23".equals(selectedmobile)) {
+                win.change("모바일");
+            } else if ("아이폰 15".equals(selectedmobile)) {
+                win.change("모바일2");
+            }
+        } else if (e.getSource() == backBtn) {
             win.change("장비 선택 화면으로");
         }
     }

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class ListLaptopPanel extends JPanel implements ActionListener {
     private Main win;
     private JList<String> laptopList;
-    private JButton backBtn;
+    private JButton selectBtn, backBtn;
 
     public ListLaptopPanel(Main win) {
         this.win = win;
@@ -19,23 +19,16 @@ public class ListLaptopPanel extends JPanel implements ActionListener {
         title.setBounds(100, 20, 300, 30);
         add(title);
 
-        // 랩탑 목록 JList
-        String[] laptops = {"삼성 갤럭시 북 4", "LG 그램", "맥북 에어"};
+        String[] laptops = {"삼성 갤럭시 북 4", "LG 그램"};
         laptopList = new JList<>(laptops);
         laptopList.setFont(new Font("SanSerif", Font.PLAIN, 16));
         JScrollPane scrollPane = new JScrollPane(laptopList);
         scrollPane.setBounds(100, 120, 300, 100);
         add(scrollPane);
 
-        JButton selectBtn = new JButton("선택");
+        selectBtn = new JButton("선택");
         selectBtn.setBounds(100, 240, 300, 40);
-        selectBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedLaptop = laptopList.getSelectedValue();
-                // 선택된 랩탑에 대한 처리
-            }
-        });
+        selectBtn.addActionListener(this);
         add(selectBtn);
 
         backBtn = new JButton("뒤");
@@ -51,7 +44,14 @@ public class ListLaptopPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == backBtn) {
+        if (e.getSource() == selectBtn) {
+            String selectedLaptop = laptopList.getSelectedValue();
+            if ("삼성 갤럭시 북 4".equals(selectedLaptop)) {
+                win.change("랩탑");
+            } else if ("LG 그램".equals(selectedLaptop)) {
+                win.change("랩탑2");
+            }
+        } else if (e.getSource() == backBtn) {
             win.change("장비 선택 화면으로");
         }
     }

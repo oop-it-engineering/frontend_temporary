@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class ListOtherPanel extends JPanel implements ActionListener {
     private Main win;
     private JList<String> otherList;
-    private JButton backBtn;
+    private JButton selectBtn, backBtn;
 
     public ListOtherPanel(Main win) {
         this.win = win;
@@ -20,22 +20,16 @@ public class ListOtherPanel extends JPanel implements ActionListener {
         add(title);
 
         // 기타 기기 목록 JList
-        String[] others = {"아두이노 우노", "아두이노 나노", "라즈베리파이"};
+        String[] others = {"아두이노 우노"};
         otherList = new JList<>(others);
         otherList.setFont(new Font("SanSerif", Font.PLAIN, 16));
         JScrollPane scrollPane = new JScrollPane(otherList);
         scrollPane.setBounds(100, 120, 300, 100);
         add(scrollPane);
 
-        JButton selectBtn = new JButton("선택");
+        selectBtn = new JButton("선택");
         selectBtn.setBounds(100, 240, 300, 40);
-        selectBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedother = otherList.getSelectedValue();
-                // 선택된 기타 기기에 대한 처리
-            }
-        });
+        selectBtn.addActionListener(this);
         add(selectBtn);
 
         backBtn = new JButton("뒤");
@@ -51,8 +45,13 @@ public class ListOtherPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == backBtn) {
-            win.change("장비 선택 화면으로");
+        if (e.getSource() == selectBtn) {
+            String selectedother = otherList.getSelectedValue();
+            if ("아두이노 우노".equals(selectedother)) {
+                win.change("기타 기기");
+            } else if (e.getSource() == backBtn) {
+                win.change("장비 선택 화면으로");
+            }
         }
     }
 }
