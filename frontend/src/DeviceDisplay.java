@@ -21,7 +21,7 @@ public class DeviceDisplay {
     }
 
     public void displayDevice(Device device) {
-        ImageIcon iconOriginal = new ImageIcon(device.getImagePath());
+        ImageIcon iconOriginal = new ImageIcon(getClass().getResource(device.getImagePath()));  // 수정
         Image imageScaled = iconOriginal.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         ImageIcon iconScaled = new ImageIcon(imageScaled);
         imageLabel.setIcon(iconScaled);

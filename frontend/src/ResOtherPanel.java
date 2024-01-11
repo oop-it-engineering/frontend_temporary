@@ -144,7 +144,7 @@ public class ResOtherPanel extends JPanel implements ActionListener {
         String[] specs = {"입출력 핀 전류: 20 mA", "3.3V 핀 전류: 50 mA", "SRAM: 2 KB"};
         for (String spec : specs) {
             JLabel label = new JLabel(spec, SwingConstants.CENTER);
-            infoTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+            label.setFont(new Font("맑은 고딕", Font.BOLD, 16));
             infoPanel.add(label);
         }
         return infoPanel;

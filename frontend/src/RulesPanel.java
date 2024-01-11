@@ -33,12 +33,14 @@ public class RulesPanel extends JDialog {
         rulesTextArea.setWrapStyleWord(true);
         rulesTextArea.setLineWrap(true);
         rulesTextArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        rulesTextArea.setFont(new Font("맑은 고딕", Font.PLAIN, 13));
 
         agreeButton = new JButton("동의");
         agreeButton.setBackground(new Color(0, 48, 135));
         agreeButton.setOpaque(true);
         agreeButton.setBorderPainted(false);
         agreeButton.setForeground(Color.WHITE);
+        agreeButton.setFont(new Font("맑은 고딕", Font.BOLD, 13));
     }
 
     private void rulesLayout() {
@@ -68,7 +70,7 @@ public class RulesPanel extends JDialog {
 
     private void startTimer() {
         timerLabel = new JLabel("남은 시간: " + timeLeft);
-        timerLabel.setFont(new Font(timerLabel.getFont().getName(), Font.BOLD, 24));
+        timerLabel.setFont(new Font("맑은 고딕", Font.BOLD, 24));
         timerLabel.setForeground(Color.BLUE);
         add(timerLabel, BorderLayout.NORTH);
 

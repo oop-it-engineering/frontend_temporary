@@ -19,9 +19,9 @@ public class MyPagePanel_1 extends JPanel implements ActionListener {
         //setTitle("앱 이름 - 마이페이지");
 
         // 폰트 객체 생성
-        Font font1 = new Font("고딕체", Font.BOLD, 20);
-        Font font2 = new Font("고딕체", Font.PLAIN, 12);
-        Font font3 = new Font("고딕체", Font.BOLD, 12);
+        Font font1 = new Font("맑은 고딕", Font.BOLD, 20);
+        Font font2 = new Font("맑은 고딕", Font.PLAIN, 12);
+        Font font3 = new Font("맑은 고딕", Font.BOLD, 12);
 
         // 뒤로 가기 버튼
         //ImageIcon backIcon = new ImageIcon("backButton.png");
