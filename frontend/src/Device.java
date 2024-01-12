@@ -1,14 +1,14 @@
 public class Device {
     private String imagePath;
-    private String devname;
+    private String name;
     private String os;
     private String cpu;
     private String ram;
     private String status;
 
-    public Device(String imagePath, String devname, String os, String cpu, String ram, String status) {
-        this.imagePath = imagePath;
-        this.devname = devname;
+    public Device(String imagePath, String name, String os, String cpu, String ram, String status) {
+        this.imagePath = "/images/" + imagePath;  // 수정
+        this.name = name;
         this.os = os;
         this.cpu = cpu;
         this.ram = ram;
@@ -20,7 +20,7 @@ public class Device {
     }
 
     public String getDevname() {
-        return devname;
+        return name;
     }
 
     public String getOs() {

@@ -48,7 +48,7 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
 
         // 가운데 제목 라벨
         JLabel titleLabel = new JLabel("예약 페이지", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 25));
+        titleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 25));
         titleLabel.setForeground(Color.WHITE);
         topPanel.add(titleLabel, BorderLayout.CENTER);
 
@@ -66,7 +66,7 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
 
         // 제목 라벨
         JLabel deviceTitleLabel = new JLabel("갤럭시 북 4");
-        deviceTitleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        deviceTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 30));
         deviceTitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         centerPanel.add(deviceTitleLabel);
 
@@ -99,6 +99,7 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
 
         // '규정 확인하기' -> 규정 확인 창으로 넘어가는 버튼
         JButton reserveButton = new JButton("예약하기");
+        reserveButton.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         reserveButton.setPreferredSize(new Dimension(200, 50));
         styleButton(reserveButton);
         reserveButton.addActionListener(e -> showRulesDialog());
@@ -123,8 +124,8 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
         button.setFocusPainted(false);
         button.setContentAreaFilled(false);
         button.setForeground(Color.WHITE);
-        button.setBackground(new Color(70, 130, 180));
-        button.setFont(new Font("Arial", Font.BOLD, 16));
+        button.setBackground(new Color(41, 57, 80));
+        button.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         button.setOpaque(true);
     }
 
@@ -132,18 +133,18 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
     private JPanel createInfoPanel(int width) {
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new GridLayout(4, 1, 0, 0));
-        infoPanel.setBorder(new LineBorder(Color.BLACK));
         infoPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         infoPanel.setBackground(new Color(230, 244, 250));
         infoPanel.setMaximumSize(new Dimension(width, 120));
 
         JLabel infoTitleLabel = new JLabel("상세 사양", SwingConstants.CENTER);
-        infoTitleLabel.setFont(infoTitleLabel.getFont().deriveFont(Font.BOLD));
+        infoTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
         infoPanel.add(infoTitleLabel);
 
         String[] specs = {"OS: Windows 11", "CPU: Intel i7", "RAM: 16GB"};
         for (String spec : specs) {
             JLabel label = new JLabel(spec, SwingConstants.CENTER);
+            infoTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 16));
             infoPanel.add(label);
         }
         return infoPanel;
@@ -153,18 +154,20 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
     private JPanel createReservationPanel(int width) {
         JPanel reservationPanel = new JPanel();
         reservationPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        reservationPanel.setBorder(new LineBorder(Color.BLACK));
         reservationPanel.setBackground(new Color(255, 250, 205));
         reservationPanel.setMaximumSize(new Dimension(400, 70));
 
         dateLabel = new JLabel("대여 날짜 입력: ");
+        dateLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
         reservationPanel.add(dateLabel);
 
         dateTextField = new HintTextField("YYYY-MM-DD"); // 힌트 텍스트 설정
+        dateTextField.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
         reservationPanel.add(dateTextField);
 
         // 남은 기기 수량 라벨
         remainingDeviceLabel = new JLabel("남은 기기 수량: 10", SwingConstants.CENTER); // 예시 수량
+        remainingDeviceLabel.setFont(new Font("맑은 고딕", Font.PLAIN, 14));
         reservationPanel.add(remainingDeviceLabel);
 
         return reservationPanel;
@@ -173,7 +176,7 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton) {
-            win.change("장비 선택 화면으로");
+            win.change("기기 선택 화면으로");
         } else if (e.getSource() == homeButton) {
             win.change("대여/문의 선택 화면으로");
         }
