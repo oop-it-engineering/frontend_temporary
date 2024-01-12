@@ -73,7 +73,7 @@ public class MyPagePanel_2 extends JPanel implements ActionListener {
         devices.add(new Device("samsung_mobile.jpeg", "스마트폰", "iOS", "A14 Bionic", "6GB", "대여중"));
         devices.add(new Device("samsung_laptop.png", "노트북", "Windows 10", "Intel i7", "16GB", "대여중"));
         devices.add(new Device("samsung_tablet.jpeg", "타블렛", "Android", "Snapdragon 865", "8GB", "대여중"));
-        
+
         // 기기 목록 패널
         Font infoFont = new Font("맑은 고딕", Font.PLAIN, 16);
         gbc.gridwidth = 1;
@@ -92,23 +92,23 @@ public class MyPagePanel_2 extends JPanel implements ActionListener {
             infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
             infoPanel.setOpaque(false);
 
-            JLabel nameLabel = new JLabel("기기 이름: " + device.getDevname());
+            JLabel nameLabel = new JLabel();
             nameLabel.setFont(infoFont);
             infoPanel.add(nameLabel);
 
-            JLabel osLabel = new JLabel("OS: " + device.getOs());
+            JLabel osLabel = new JLabel();
             osLabel.setFont(infoFont);
             infoPanel.add(osLabel);
 
-            JLabel cpuLabel = new JLabel("CPU: " + device.getCpu());
+            JLabel cpuLabel = new JLabel();
             cpuLabel.setFont(infoFont);
             infoPanel.add(cpuLabel);
 
-            JLabel ramLabel = new JLabel("RAM: " + device.getRam());
+            JLabel ramLabel = new JLabel();
             ramLabel.setFont(infoFont);
             infoPanel.add(ramLabel);
 
-            JLabel statusLabel = new JLabel("상태: " + device.getStatus());
+            JLabel statusLabel = new JLabel();
             statusLabel.setFont(infoFont);
             infoPanel.add(statusLabel);
 
@@ -120,10 +120,12 @@ public class MyPagePanel_2 extends JPanel implements ActionListener {
             gbc.gridx = 1; // 두 번째 열
             centerPanel.add(infoPanel, gbc);
 
+            this.deviceDisplay = new DeviceDisplay(nameLabel, osLabel, cpuLabel, ramLabel, statusLabel);
+            this.showDeviceDetails(this.deviceDisplay, (Device)this.devices.get(i));
+
             // 기기 신고 버튼
             lostBtn = new JButton("기기 신고");
             lostBtn.setFont(infoFont);
-            infoPanel.add(lostBtn);
             lostBtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -142,7 +144,7 @@ public class MyPagePanel_2 extends JPanel implements ActionListener {
                         JOptionPane.showMessageDialog(
                                 null,
                                 "선택한 신고 유형: " + selectedOption +
-                                "\n 빠른 시일 내로 학과 사무실에 방문해 주세요.",
+                                        "\n 빠른 시일 내로 학과 사무실에 방문해 주세요.",
                                 "알림",
                                 JOptionPane.INFORMATION_MESSAGE);
                     } else {
@@ -153,20 +155,9 @@ public class MyPagePanel_2 extends JPanel implements ActionListener {
                                 "알림",
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
-                    //JOptionPane.showMessageDialog(win, "분실 신고가 완료되었습니다.", "분실 신고", JOptionPane.INFORMATION_MESSAGE);
                 }
             });
-            add(lostBtn);
-
-            /*lostBtn = new JButton("손상");
-            lostBtn.setBounds(290, 250 + 150 * i, 80, 20);
-            lostBtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    JOptionPane.showMessageDialog(win, "손상 신고가 완료되었습니다.", "손상 신고", JOptionPane.INFORMATION_MESSAGE);
-                }
-            });
-            add(lostBtn);*/
+            infoPanel.add(lostBtn);
         }
         add(centerPanel, BorderLayout.CENTER);
     }
@@ -179,15 +170,12 @@ public class MyPagePanel_2 extends JPanel implements ActionListener {
         else if (e.getSource() == confirmed) {
             win.change("마이페이지 수령 대기 화면으로");
         }
-        /*else if (e.getSource() == lostBtn) {
-            JOptionPane.showMessageDialog(win, "분실 신고가 완료되었습니다.", "분실 신고", JOptionPane.INFORMATION_MESSAGE);
-        }*/
     }
 
     private void showDeviceDetails(DeviceDisplay deviceDisplay, Device device) {
         deviceDisplay.displayDevice(device);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.getStackTrace();
         }

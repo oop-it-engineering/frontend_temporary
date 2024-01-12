@@ -62,12 +62,12 @@ public class MyPagePanel_1 extends JPanel implements ActionListener {
         confirmed = SetupUI.createButton("수령 대기", onColor, 20, 175, 40, this);
         SetupUI.setupGBC(gbc, 0, 1, 1, GridBagConstraints.CENTER);
         centerPanel.add(confirmed, gbc);
-        
+
         // 대여중 버튼
         renting = SetupUI.createButton("대여중", offColor, 20, 175, 40, this);
         SetupUI.setupGBC(gbc, 1, 1, 1, GridBagConstraints.CENTER);
         centerPanel.add(renting, gbc);
-        
+
         // 기기 목록
         devices = new ArrayList<>();
         devices.add(new Device("samsung_tablet.jpeg", "타블렛", "Android", "Snapdragon 865", "8GB", "수령 대기"));
@@ -92,23 +92,23 @@ public class MyPagePanel_1 extends JPanel implements ActionListener {
             infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
             infoPanel.setOpaque(false);
 
-            JLabel nameLabel = new JLabel("기기 이름: " + device.getDevname());
+            JLabel nameLabel = new JLabel();
             nameLabel.setFont(infoFont);
             infoPanel.add(nameLabel);
 
-            JLabel osLabel = new JLabel("OS: " + device.getOs());
+            JLabel osLabel = new JLabel();
             osLabel.setFont(infoFont);
             infoPanel.add(osLabel);
 
-            JLabel cpuLabel = new JLabel("CPU: " + device.getCpu());
+            JLabel cpuLabel = new JLabel();
             cpuLabel.setFont(infoFont);
             infoPanel.add(cpuLabel);
 
-            JLabel ramLabel = new JLabel("RAM: " + device.getRam());
+            JLabel ramLabel = new JLabel();
             ramLabel.setFont(infoFont);
             infoPanel.add(ramLabel);
 
-            JLabel statusLabel = new JLabel("상태: " + device.getStatus());
+            JLabel statusLabel = new JLabel();
             statusLabel.setFont(infoFont);
             infoPanel.add(statusLabel);
 
@@ -119,6 +119,9 @@ public class MyPagePanel_1 extends JPanel implements ActionListener {
 
             gbc.gridx = 1; // 두 번째 열
             centerPanel.add(infoPanel, gbc);
+
+            this.deviceDisplay = new DeviceDisplay(nameLabel, osLabel, cpuLabel, ramLabel, statusLabel);
+            this.showDeviceDetails(this.deviceDisplay, (Device)this.devices.get(i));
         }
 
         add(centerPanel, BorderLayout.CENTER);
@@ -137,7 +140,7 @@ public class MyPagePanel_1 extends JPanel implements ActionListener {
     private void showDeviceDetails(DeviceDisplay deviceDisplay, Device device) {
         deviceDisplay.displayDevice(device);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.getStackTrace();
         }

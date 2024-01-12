@@ -4,16 +4,14 @@ import java.awt.*;
 
 public class DeviceDisplay {
 
-    private JLabel imageLabel;
-    private JLabel devnameLabel;
+    private JLabel nameLabel;
     private JLabel osLabel;
     private JLabel cpuLabel;
     private JLabel ramLabel;
     private JLabel statusLabel;
 
-    public DeviceDisplay(JLabel imageLabel, JLabel devnameLabel, JLabel osLabel, JLabel cpuLabel, JLabel ramLabel, JLabel statusLabel) {
-        this.imageLabel = imageLabel;
-        this.devnameLabel = devnameLabel;
+    public DeviceDisplay(JLabel nameLabel, JLabel osLabel, JLabel cpuLabel, JLabel ramLabel, JLabel statusLabel) {
+        this.nameLabel = nameLabel;
         this.osLabel = osLabel;
         this.cpuLabel = cpuLabel;
         this.ramLabel = ramLabel;
@@ -21,12 +19,7 @@ public class DeviceDisplay {
     }
 
     public void displayDevice(Device device) {
-        ImageIcon iconOriginal = new ImageIcon(getClass().getResource(device.getImagePath()));  // 수정
-        Image imageScaled = iconOriginal.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        ImageIcon iconScaled = new ImageIcon(imageScaled);
-        imageLabel.setIcon(iconScaled);
-
-        devnameLabel.setText("기기 이름: " + device.getDevname());
+        nameLabel.setText("기기 이름: " + device.getDevname());
         osLabel.setText("OS: " + device.getOs());
         cpuLabel.setText("CPU: " + device.getCpu());
         ramLabel.setText("RAM: " + device.getRam());
