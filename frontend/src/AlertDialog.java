@@ -22,6 +22,9 @@ public class AlertDialog extends JDialog {
         okButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
         okButton.setForeground(Color.WHITE);
         okButton.setBackground(new Color(0, 48, 135));
+        okButton.setOpaque(true);
+        okButton.setContentAreaFilled(true); // 여기를 true로 변경!!
+        okButton.setBorderPainted(false);
         okButton.setPreferredSize(new Dimension(100, 50));
         okButton.setFocusPainted(false);
         okButton.addActionListener(new ActionListener() {
