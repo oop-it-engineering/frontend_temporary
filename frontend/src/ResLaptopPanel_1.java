@@ -66,7 +66,7 @@ public class ResLaptopPanel_1 extends JPanel implements ActionListener {
 
         // 제목 라벨
         JLabel deviceTitleLabel = new JLabel("갤럭시 북 4");
-        deviceTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+        deviceTitleLabel.setFont(new Font("맑은 고딕", Font.BOLD, 30));
         deviceTitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         centerPanel.add(deviceTitleLabel);
 
